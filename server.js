@@ -14,7 +14,7 @@ app.use(express.json());
 
 
 //get requests to connect index and notes html
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
@@ -28,11 +28,26 @@ app.get("/notes", (req, res) => {
     -read the `db.json` file and return all saved notes as JSON
 */
 
+//--------------------------------------------------------------------------
+app.get("/api/notes", (req, res) => {
+    res.sendFile(path.join(__dirname, "/db/db.json"));
+});
+
+
+//---------------------------------------------------------------------------
+
 /*
 -app.post (`/api/notes`) 
     -receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
     -give each note unique ID when saved
 */
+
+//--------------------------------------------------------------------------
+
+
+
+//---------------------------------------------------------------------------
+
 
 /*
 -app.delete (`/api/notes/:id`) receive a query parameter containing the id of a note to delete.
@@ -40,6 +55,12 @@ app.get("/notes", (req, res) => {
     -remove the note with the given `id` property
     -rewrite the notes to the `db.json` file
 */
+
+//--------------------------------------------------------------------------
+
+
+
+//---------------------------------------------------------------------------
 
 
 
