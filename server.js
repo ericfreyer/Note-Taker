@@ -23,9 +23,9 @@ app.get("/notes", (require, response) => {
     response.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
-app.get('*', function(request, response) {
-    response.sendFile(path.join(__dirname, '/public/index.html'));
-  });
+// app.get('*', function(request, response) {
+//     response.sendFile(path.join(__dirname, '/public/index.html'));
+//   });
 
 //API ROUTES
 
@@ -44,18 +44,23 @@ app.get("/api/notes", (require, response) => {
 
 /*
 -app.post (`/api/notes`) 
-    [X]-receive a new note to save on the request body, 
+    [X]- read function
+    []- write function
+    []-receive a new note to save on the request body, 
     []-PUSH note to the `db.json` file, and then return the new note to the client.
     []-give each note unique ID when saved
 */
 
 //--------------------------------------------------------------------------
-app.post("/api/notes", (require, response) => {
-    let newNote = require.body;
+//read and write functions for post request.
+const readNote = () => {
+    const noteText = JSON.parse
+        (fs.readFileSync
+            (path.join(__dirname, '/db/db.json'))
+        );
+    return noteText;
+}
 
-    //?.push(newNote);
-
-});
 
 
 //---------------------------------------------------------------------------
