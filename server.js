@@ -14,12 +14,12 @@ app.use(express.json());
 
 
 //get requests to connect index and notes html
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
+app.get("*", (require, response) => {
+    response.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-app.get("/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "/public/notes.html"));
+app.get("/notes", (require, response) => {
+    response.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
 
@@ -29,8 +29,8 @@ app.get("/notes", (req, res) => {
 */
 
 //--------------------------------------------------------------------------
-app.get("/api/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "/db/db.json"));
+app.get("/api/notes", (require, response) => {
+    response.sendFile(path.join(__dirname, "/db/db.json"));
 });
 
 
@@ -43,7 +43,9 @@ app.get("/api/notes", (req, res) => {
 */
 
 //--------------------------------------------------------------------------
+app.post("/api/notes", (require, response) => {
 
+});
 
 
 //---------------------------------------------------------------------------
@@ -57,7 +59,9 @@ app.get("/api/notes", (req, res) => {
 */
 
 //--------------------------------------------------------------------------
+app.delete("/api/notes/:id", (require,response) => {
 
+});
 
 
 //---------------------------------------------------------------------------
