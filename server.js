@@ -23,6 +23,27 @@ app.get("/notes", (req, res) => {
 });
 
 
+/*
+-app.get (`/api/notes`) 
+    -read the `db.json` file and return all saved notes as JSON
+*/
+
+/*
+-app.post (`/api/notes`) 
+    -receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
+    -give each note unique ID when saved
+*/
+
+/*
+-app.delete (`/api/notes/:id`) receive a query parameter containing the id of a note to delete.
+    -need to read all notes from the `db.json` file
+    -remove the note with the given `id` property
+    -rewrite the notes to the `db.json` file
+*/
+
+
+
+
 //setting up simple listen function to see if server is working.
 app.listen(PORT, function() {
     console.log("Server listening on: http://localhost:" + PORT);
