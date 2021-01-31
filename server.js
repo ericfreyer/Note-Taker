@@ -45,9 +45,9 @@ app.get("/api/notes", (require, response) => {
 /*
 -app.post (`/api/notes`) 
     [X]- read function
-    []- write function
-    []-receive a new note to save on the request body, 
-    []-PUSH note to the `db.json` file, and then return the new note to the client.
+    [X]- write function
+    [X]-receive a new note to save on the request body, 
+    [X]-PUSH note to the `db.json` file, and then return the new note to the client.
     []-give each note unique ID when saved
 */
 
@@ -60,7 +60,22 @@ const readNote = () => {
         );
     return noteText;
 }
+const writeNote = function (noteText) {
+    fs.writeFileSync
+        (path.join(__dirname, '/db/db.json'), 
+        JSON.stringify(noteText), 
+        function (err) {
+        if (err) return ({ err });
+    })
+}
 
+app.post("/api/notes", (require, response) => {
+    let newNote = require.body;
+    let noteArry = readNote();
+    noteArry.push(newNote);
+        writeNote(noteArry);
+        return response.json(noteArry)
+});
 
 
 //---------------------------------------------------------------------------
