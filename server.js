@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const PORT = 8080
-const database = require("./db/db.json")
+
 
 
 //setting up express
