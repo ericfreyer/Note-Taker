@@ -10,7 +10,7 @@ const PORT = 8080
 var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(express.static("public"));
 
 //HTML ROUTES
 
