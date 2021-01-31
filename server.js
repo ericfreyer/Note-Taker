@@ -2,9 +2,8 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const util = require('util')
-const http = require('http')
 const PORT = 8080
+const database = require("./db/db.json")
 
 
 //setting up express
@@ -13,8 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-//get requests to connect index and notes html
-app.get("*", (require, response) => {
+//HTML ROUTES
+
+
+app.get("/", (require, response) => {
     response.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
@@ -22,10 +23,15 @@ app.get("/notes", (require, response) => {
     response.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
+app.get('*', function(request, response) {
+    response.sendFile(path.join(__dirname, '/public/index.html'));
+  });
+
+//API ROUTES
 
 /*
 -app.get (`/api/notes`) 
-    -read the `db.json` file and return all saved notes as JSON
+    [X]-read the `db.json` file and return all saved notes as JSON
 */
 
 //--------------------------------------------------------------------------
@@ -38,12 +44,16 @@ app.get("/api/notes", (require, response) => {
 
 /*
 -app.post (`/api/notes`) 
-    -receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
-    -give each note unique ID when saved
+    [X]-receive a new note to save on the request body, 
+    []-PUSH note to the `db.json` file, and then return the new note to the client.
+    []-give each note unique ID when saved
 */
 
 //--------------------------------------------------------------------------
 app.post("/api/notes", (require, response) => {
+    let newNote = require.body;
+
+    //?.push(newNote);
 
 });
 
