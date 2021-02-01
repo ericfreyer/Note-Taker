@@ -43,7 +43,7 @@ app.get("/api/notes", (require, response) => {
     [X]- write function
     [X]-receive a new note to save on the request body, 
     [X]-PUSH note to the `db.json` file, and then return the new note to the client.
-    []-give each note unique ID when saved
+    [X]-give each note unique ID when saved
 */
 //============================================================================
 const readNote = () => {
@@ -77,15 +77,34 @@ app.post("/api/notes", (require, response) => {
 
 /*
 -app.delete (`/api/notes/:id`) receive a query parameter containing the id of a note to delete.
-    -need to read all notes from the `db.json` file
-    -remove the note with the given `id` property
-    -rewrite the notes to the `db.json` file
+    [X]READ all notes from the `db.json` file
+    [X]remove the note with the given `id` property
+    [X]WRITE the notes to the `db.json` file
 */
 
 //============================================================================
 app.delete("/api/notes/:id", (require,response) => {
-    let noteArry = readNote();
+    fs.readFile("db/db.json", function(error, data) {
+    let noteId = require.params.id;
+    let noteData = JSON.parse(data);
+    noteData = noteData.filter(function(note) {
+        if (noteId != note.id) {
+          return true;
+        } else {
+          return false;
+        };
+    }); 
+    fs.writeFile("db/db.json", JSON.stringify(noteData), function(error){
+      if (error)
+      throw error;
+      response.end(console.log("Deleted Successfully"));
+    })
+  });
+
 });
+
+
+
 
 
 //============================================================================
