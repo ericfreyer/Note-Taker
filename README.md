@@ -27,7 +27,3 @@ Note-Taker App created by Eric Freyer
 * This project is licensed under the license.
 ## Questions
 * For questions about collaboration, please contact ericcfreyer@gmail.com by email or ericfreyer on github.
-
-![image](https://user-images.githubusercontent.com/72565719/105082104-183e5d80-5a61-11eb-977b-7d2dfcc57ec6.png)
-
-https://drive.google.com/file/d/1yqEKxnnerYdI6c5B7mnFo1bV4Nh5kAAu/view
