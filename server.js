@@ -28,6 +28,7 @@ app.get("/notes", (require, response) => {
 -app.get (`/api/notes`) 
     [X]-read the `db.json` file and return all saved notes as JSON
 */
+
 //============================================================================
 
 
@@ -97,21 +98,12 @@ app.delete("/api/notes/:id", (require,response) => {
     fs.writeFile("db/db.json", JSON.stringify(noteData), function(error){
       if (error)
       throw error;
-      response.end(console.log("Deleted Successfully"));
+      response.end(console.log("Note Deleted!"));
     })
   });
 
 });
-
-
-
-
-
 //============================================================================
-
-
-
-
 //setting up simple listen function to see if server is working.
 app.listen(PORT, function() {
     console.log("Server listening on: http://localhost:" + PORT);
